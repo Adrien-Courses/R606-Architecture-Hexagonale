@@ -1,8 +1,10 @@
 package fr.school.library.adapter.in.web;
 
+import fr.school.library.domain.exception.ActiveBorrowAlreadyExistsException;
+import fr.school.library.domain.exception.ActiveBorrowNotFoundException;
 import fr.school.library.domain.exception.AuthorNotFoundException;
-import fr.school.library.domain.exception.BookAlreadyBorrowedException;
 import fr.school.library.domain.exception.BookNotFoundException;
+import fr.school.library.domain.exception.BorrowAlreadyReturnedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,8 +23,18 @@ public class ApiExceptionHandler {
         return problem(HttpStatus.NOT_FOUND, exception.getMessage());
     }
 
-    @ExceptionHandler(BookAlreadyBorrowedException.class)
-    public ProblemDetail handleBookAlreadyBorrowed(BookAlreadyBorrowedException exception) {
+    @ExceptionHandler(ActiveBorrowAlreadyExistsException.class)
+    public ProblemDetail handleActiveBorrowAlreadyExists(ActiveBorrowAlreadyExistsException exception) {
+        return problem(HttpStatus.CONFLICT, exception.getMessage());
+    }
+
+    @ExceptionHandler(ActiveBorrowNotFoundException.class)
+    public ProblemDetail handleActiveBorrowNotFound(ActiveBorrowNotFoundException exception) {
+        return problem(HttpStatus.NOT_FOUND, exception.getMessage());
+    }
+
+    @ExceptionHandler(BorrowAlreadyReturnedException.class)
+    public ProblemDetail handleBorrowAlreadyReturned(BorrowAlreadyReturnedException exception) {
         return problem(HttpStatus.CONFLICT, exception.getMessage());
     }
 

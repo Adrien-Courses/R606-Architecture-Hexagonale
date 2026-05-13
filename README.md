@@ -53,5 +53,17 @@ curl http://localhost:8080/authors/<authorId>/books
 ```
 
 ```bash
-curl -X POST http://localhost:8080/books/9780061054884/borrow
+curl -X POST http://localhost:8080/books/9780061054884/borrows \
+  -H "Content-Type: application/json" \
+  -d '{"userId":42,"borrowedAt":"2026-05-13"}'
+```
+
+```bash
+curl -X POST http://localhost:8080/books/9780061054884/borrows/return \
+  -H "Content-Type: application/json" \
+  -d '{"returnedAt":"2026-05-20"}'
+```
+
+```bash
+curl http://localhost:8080/books/9780061054884/borrows
 ```
