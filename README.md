@@ -1,6 +1,13 @@
 # Library TP
 
-Projet Spring Boot volontairement non hexagonal : `Controller -> Service -> Repository`.
+Projet Spring Boot en architecture hexagonale.
+
+## Structure
+
+- `domain` : modele metier, exceptions, ports
+- `application` : cas d'usage
+- `adapter/in/web` : controleurs REST + DTO
+- `adapter/out/persistence` : adaptateurs JPA
 
 ## Prerequis
 
