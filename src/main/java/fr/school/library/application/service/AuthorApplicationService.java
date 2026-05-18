@@ -3,9 +3,9 @@ package fr.school.library.application.service;
 import fr.school.library.domain.exception.AuthorNotFoundException;
 import fr.school.library.domain.model.Author;
 import fr.school.library.domain.model.Book;
-import fr.school.library.domain.port.in.AuthorUseCase;
-import fr.school.library.domain.port.out.AuthorRepositoryPort;
-import fr.school.library.domain.port.out.BookRepositoryPort;
+import fr.school.library.application.port.in.AuthorUseCase;
+import fr.school.library.application.port.out.AuthorRepositoryPort;
+import fr.school.library.application.port.out.BookRepositoryPort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

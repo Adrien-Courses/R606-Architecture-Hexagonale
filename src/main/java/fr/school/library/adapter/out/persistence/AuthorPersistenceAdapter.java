@@ -3,7 +3,7 @@ package fr.school.library.adapter.out.persistence;
 import fr.school.library.adapter.out.persistence.mapper.PersistenceMapper;
 import fr.school.library.adapter.out.persistence.repository.SpringDataAuthorRepository;
 import fr.school.library.domain.model.Author;
-import fr.school.library.domain.port.out.AuthorRepositoryPort;
+import fr.school.library.application.port.out.AuthorRepositoryPort;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

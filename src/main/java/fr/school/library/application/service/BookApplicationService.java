@@ -2,8 +2,8 @@ package fr.school.library.application.service;
 
 import fr.school.library.domain.exception.BookNotFoundException;
 import fr.school.library.domain.model.Book;
-import fr.school.library.domain.port.in.BookUseCase;
-import fr.school.library.domain.port.out.BookRepositoryPort;
+import fr.school.library.application.port.in.BookUseCase;
+import fr.school.library.application.port.out.BookRepositoryPort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

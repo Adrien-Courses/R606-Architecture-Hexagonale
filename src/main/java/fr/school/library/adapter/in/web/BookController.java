@@ -2,7 +2,7 @@ package fr.school.library.adapter.in.web;
 
 import fr.school.library.adapter.in.web.dto.BookResponseDTO;
 import fr.school.library.adapter.in.web.mapper.WebDtoMapper;
-import fr.school.library.domain.port.in.BookUseCase;
+import fr.school.library.application.port.in.BookUseCase;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

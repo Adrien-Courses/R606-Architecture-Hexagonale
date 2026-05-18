@@ -5,7 +5,7 @@ import fr.school.library.adapter.in.web.dto.BookResponseDTO;
 import fr.school.library.adapter.in.web.dto.CreateAuthorRequest;
 import fr.school.library.adapter.in.web.dto.CreateBookRequest;
 import fr.school.library.adapter.in.web.mapper.WebDtoMapper;
-import fr.school.library.domain.port.in.AuthorUseCase;
+import fr.school.library.application.port.in.AuthorUseCase;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
