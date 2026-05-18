@@ -1,10 +1,10 @@
-package fr.school.library.adapter.outt.persistence;
+package fr.school.library.adapter.out.persistence;
 
-import fr.school.library.adapter.outt.persistence.entity.AuthorEntity;
-import fr.school.library.adapter.outt.persistence.entity.BookEntity;
-import fr.school.library.adapter.outt.persistence.mapper.BookPersistenceMapper;
-import fr.school.library.adapter.outt.persistence.repository.SpringDataAuthorRepository;
-import fr.school.library.adapter.outt.persistence.repository.SpringDataBookRepository;
+import fr.school.library.adapter.out.persistence.entity.AuthorEntity;
+import fr.school.library.adapter.out.persistence.entity.BookEntity;
+import fr.school.library.adapter.out.persistence.mapper.BookPersistenceMapper;
+import fr.school.library.adapter.out.persistence.repository.SpringDataAuthorRepository;
+import fr.school.library.adapter.out.persistence.repository.SpringDataBookRepository;
 import fr.school.library.domain.exception.AuthorNotFoundException;
 import fr.school.library.domain.model.Book;
 import fr.school.library.domain.port.out.BookRepositoryPort;

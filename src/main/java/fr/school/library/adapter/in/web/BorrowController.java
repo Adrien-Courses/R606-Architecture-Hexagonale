@@ -4,7 +4,7 @@ import fr.school.library.adapter.in.web.dto.BorrowResponseDTO;
 import fr.school.library.adapter.in.web.dto.CreateBorrowRequest;
 import fr.school.library.adapter.in.web.dto.RegisterReturnRequest;
 import fr.school.library.adapter.in.web.mapper.WebDtoMapper;
-import fr.school.library.domain.port.in.BorrowUseCase;
+import fr.school.library.application.port.in.BorrowUseCase;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

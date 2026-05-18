@@ -1,6 +1,6 @@
-package fr.school.library.adapter.outt.persistence.mapper;
+package fr.school.library.adapter.out.persistence.mapper;
 
-import fr.school.library.adapter.outt.persistence.entity.BorrowEntity;
+import fr.school.library.adapter.out.persistence.entity.BorrowEntity;
 import fr.school.library.domain.model.Borrow;
 import fr.school.library.domain.model.BorrowId;
 import fr.school.library.domain.model.Isbn;

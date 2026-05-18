@@ -1,6 +1,6 @@
-package fr.school.library.adapter.outt.persistence.repository;
+package fr.school.library.adapter.out.persistence.repository;
 
-import fr.school.library.adapter.outt.persistence.entity.BorrowEntity;
+import fr.school.library.adapter.out.persistence.entity.BorrowEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

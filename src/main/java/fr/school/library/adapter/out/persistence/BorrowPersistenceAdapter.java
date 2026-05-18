@@ -1,7 +1,7 @@
-package fr.school.library.adapter.outt.persistence;
+package fr.school.library.adapter.out.persistence;
 
-import fr.school.library.adapter.outt.persistence.mapper.BorrowPersistenceMapper;
-import fr.school.library.adapter.outt.persistence.repository.SpringDataBorrowRepository;
+import fr.school.library.adapter.out.persistence.mapper.BorrowPersistenceMapper;
+import fr.school.library.adapter.out.persistence.repository.SpringDataBorrowRepository;
 import fr.school.library.domain.model.Borrow;
 import fr.school.library.domain.model.Isbn;
 import fr.school.library.domain.port.out.BorrowRepositoryPort;

@@ -1,7 +1,7 @@
-package fr.school.library.adapter.outt.persistence;
+package fr.school.library.adapter.out.persistence;
 
-import fr.school.library.adapter.outt.persistence.mapper.AuthorPersistenceMapper;
-import fr.school.library.adapter.outt.persistence.repository.SpringDataAuthorRepository;
+import fr.school.library.adapter.out.persistence.mapper.AuthorPersistenceMapper;
+import fr.school.library.adapter.out.persistence.repository.SpringDataAuthorRepository;
 import fr.school.library.domain.model.Author;
 import fr.school.library.domain.port.out.AuthorRepositoryPort;
 import org.springframework.stereotype.Component;

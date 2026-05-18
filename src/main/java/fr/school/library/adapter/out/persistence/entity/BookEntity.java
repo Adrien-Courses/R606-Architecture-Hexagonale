@@ -1,4 +1,4 @@
-package fr.school.library.adapter.outt.persistence.entity;
+package fr.school.library.adapter.out.persistence.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

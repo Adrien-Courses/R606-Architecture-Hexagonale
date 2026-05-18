@@ -1,7 +1,7 @@
-package fr.school.library.adapter.outt.persistence.mapper;
+package fr.school.library.adapter.out.persistence.mapper;
 
-import fr.school.library.adapter.outt.persistence.entity.AuthorEntity;
-import fr.school.library.adapter.outt.persistence.entity.BookEntity;
+import fr.school.library.adapter.out.persistence.entity.AuthorEntity;
+import fr.school.library.adapter.out.persistence.entity.BookEntity;
 import fr.school.library.domain.model.Book;
 import org.springframework.stereotype.Component;
 

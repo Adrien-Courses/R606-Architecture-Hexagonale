@@ -6,7 +6,7 @@ import fr.school.library.domain.exception.BookNotFoundException;
 import fr.school.library.domain.model.Borrow;
 import fr.school.library.domain.model.Isbn;
 import fr.school.library.domain.model.UserId;
-import fr.school.library.domain.port.in.BorrowUseCase;
+import fr.school.library.application.port.in.BorrowUseCase;
 import fr.school.library.domain.port.out.BookRepositoryPort;
 import fr.school.library.domain.port.out.BorrowRepositoryPort;
 import org.springframework.stereotype.Service;
