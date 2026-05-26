@@ -6,6 +6,7 @@ import fr.school.library.domain.model.Borrow;
 import fr.school.library.domain.model.BorrowId;
 import fr.school.library.domain.model.Isbn;
 import fr.school.library.domain.model.UserId;
+import fr.school.library.domain.port.out.BorrowNotificationPort;
 import fr.school.library.domain.port.out.BookRepositoryPort;
 import fr.school.library.domain.port.out.BorrowRepositoryPort;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -33,6 +36,9 @@ class BorrowApplicationServiceTest {
 
     @Mock
     private BorrowRepositoryPort borrowRepositoryPort;
+
+    @Mock
+    private BorrowNotificationPort borrowNotificationPort;
 
     @InjectMocks
     private BorrowApplicationService borrowApplicationService;
@@ -64,6 +70,11 @@ class BorrowApplicationServiceTest {
         assertEquals("9780061054884", created.getBookIsbn().value());
         assertEquals(42L, created.getUserId().value());
         assertEquals(LocalDate.of(2026, 5, 13), created.getBorrowedAt());
+        verify(borrowNotificationPort).sendBorrowCreatedEmail(
+                eq("bibliotheque@fake.fr"),
+                eq("The Left Hand of Darkness"),
+                eq(LocalDate.of(2026, 5, 27))
+        );
     }
 
     @Test
@@ -77,6 +88,7 @@ class BorrowApplicationServiceTest {
                 ActiveBorrowAlreadyExistsException.class,
                 () -> borrowApplicationService.createBorrow("9780061054884", 42L, LocalDate.now())
         );
+        verify(borrowNotificationPort, never()).sendBorrowCreatedEmail(any(), any(), any());
     }
 
     @Test

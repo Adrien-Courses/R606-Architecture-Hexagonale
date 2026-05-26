@@ -4,9 +4,11 @@ import fr.school.library.domain.exception.ActiveBorrowAlreadyExistsException;
 import fr.school.library.domain.exception.ActiveBorrowNotFoundException;
 import fr.school.library.domain.exception.BookNotFoundException;
 import fr.school.library.domain.model.Borrow;
+import fr.school.library.domain.model.Book;
 import fr.school.library.domain.model.Isbn;
 import fr.school.library.domain.model.UserId;
 import fr.school.library.application.port.in.BorrowUseCase;
+import fr.school.library.domain.port.out.BorrowNotificationPort;
 import fr.school.library.domain.port.out.BookRepositoryPort;
 import fr.school.library.domain.port.out.BorrowRepositoryPort;
 import org.springframework.stereotype.Service;
@@ -17,22 +19,27 @@ import java.util.List;
 
 @Service
 public class BorrowApplicationService implements BorrowUseCase {
+    private static final String LIBRARY_EMAIL = "bibliotheque@fake.fr";
+    private static final int BORROW_DURATION_DAYS = 14;
 
     private final BookRepositoryPort bookRepositoryPort;
     private final BorrowRepositoryPort borrowRepositoryPort;
+    private final BorrowNotificationPort borrowNotificationPort;
 
     public BorrowApplicationService(
             BookRepositoryPort bookRepositoryPort,
-            BorrowRepositoryPort borrowRepositoryPort
+            BorrowRepositoryPort borrowRepositoryPort,
+            BorrowNotificationPort borrowNotificationPort
     ) {
         this.bookRepositoryPort = bookRepositoryPort;
         this.borrowRepositoryPort = borrowRepositoryPort;
+        this.borrowNotificationPort = borrowNotificationPort;
     }
 
     @Override
     @Transactional
     public Borrow createBorrow(String isbn, Long userId, LocalDate borrowedAt) {
-        ensureBookExists(isbn);
+        Book book = ensureBookExists(isbn);
         LocalDate effectiveBorrowedAt = borrowedAt != null ? borrowedAt : LocalDate.now();
 
         Isbn bookIsbn = new Isbn(isbn);
@@ -41,7 +48,12 @@ public class BorrowApplicationService implements BorrowUseCase {
         }
 
         Borrow borrow = Borrow.create(bookIsbn, new UserId(userId), effectiveBorrowedAt);
-        return borrowRepositoryPort.save(borrow);
+        Borrow savedBorrow = borrowRepositoryPort.save(borrow);
+
+        LocalDate dueDate = effectiveBorrowedAt.plusDays(BORROW_DURATION_DAYS);
+        borrowNotificationPort.sendBorrowCreatedEmail(LIBRARY_EMAIL, book.getTitle(), dueDate);
+
+        return savedBorrow;
     }
 
     @Override
@@ -64,9 +76,8 @@ public class BorrowApplicationService implements BorrowUseCase {
         return borrowRepositoryPort.findByBookIsbn(new Isbn(isbn));
     }
 
-    private void ensureBookExists(String isbn) {
-        if (bookRepositoryPort.findByIsbn(isbn).isEmpty()) {
-            throw new BookNotFoundException(isbn);
-        }
+    private Book ensureBookExists(String isbn) {
+        return bookRepositoryPort.findByIsbn(isbn)
+                .orElseThrow(() -> new BookNotFoundException(isbn));
     }
 }
