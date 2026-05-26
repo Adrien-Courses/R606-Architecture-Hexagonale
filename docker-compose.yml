@@ -9,3 +9,10 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
     ports:
       - "3304:3306"
+
+  smtp:
+    image: mailhog/mailhog:v1.0.1
+    container_name: library-tp-smtp
+    ports:
+      - "1025:1025"
+      - "8025:8025"
